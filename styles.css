@@ -70,3 +70,21 @@ body{background:radial-gradient(circle at 87% 8%,rgba(142,155,130,.12),transpare
 
 @media(max-width:620px){.site-header.scrolled{height:62px}.availability{max-width:300px;line-height:1.45}.motion-ready .motion-left,.motion-ready .motion-right{transform:translateY(28px)}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.motion-item{opacity:1!important;transform:none!important}.scroll-progress{display:none}}
+
+/* Playful interactive details */
+.section{position:relative}.section> :not(.interactive-shape){position:relative;z-index:1}
+.interactive-shape{--mag-x:0px;--mag-y:0px;--mag-r:0deg;--mag-scale:1;position:absolute;z-index:3;display:grid;place-items:center;cursor:crosshair;user-select:none;touch-action:manipulation;transform:translate3d(var(--mag-x),var(--mag-y),0) rotate(var(--mag-r)) scale(var(--mag-scale));transition:transform .45s var(--ease-out),color .3s,background .3s,border-color .3s;will-change:transform}
+.interactive-shape::after{content:"";position:absolute;inset:-10px;border:1px solid currentColor;border-radius:inherit;opacity:0;pointer-events:none}
+.interactive-shape.shape-burst::after{animation:shapeRipple .62s var(--ease-out)}
+@keyframes shapeRipple{0%{opacity:.5;transform:scale(.55)}100%{opacity:0;transform:scale(1.45)}}
+.shape-star{color:var(--sage-dark);font-family:var(--serif)}
+.spark.interactive-shape{animation-fill-mode:none!important}.spark.interactive-shape:hover{color:var(--clay)}
+.shape-dotted-ring{width:86px;height:86px;border:2px dotted var(--sage-dark);border-radius:50%;background:radial-gradient(circle,var(--clay) 0 3px,transparent 4px) center/18px 18px;opacity:.72}
+.shape-dotted-ring:hover{border-color:var(--clay);background-size:22px 22px}
+.shape-petal{width:62px;height:62px;border-radius:50%;background:rgba(142,155,130,.16);color:var(--sage-dark);font-size:30px}
+.shape-diamond{width:52px;height:52px;border:1px solid var(--sage-dark);background:rgba(255,250,240,.75);transform:translate3d(var(--mag-x),var(--mag-y),0) rotate(calc(45deg + var(--mag-r))) scale(var(--mag-scale))}
+.hero-dotted-ring{right:2%;top:42%;width:70px;height:70px;opacity:.55}.about-petal{right:4.5%;bottom:8%}.work-ring{left:2.5%;bottom:8%;width:58px;height:58px;opacity:.45}.design-diamond{right:3%;top:3.5%}.design-star{left:2%;top:14%;font-size:42px;opacity:.55}.contact-ring{left:4%;top:14%;border-color:rgba(36,37,31,.65);opacity:.55}
+.orbit.interactive-shape{position:absolute}.orbit.interactive-shape:hover{background:var(--paper);border-color:var(--clay);color:var(--clay)}
+@media(max-width:900px){.hero-dotted-ring{right:0;top:48%}.about-petal,.work-ring,.design-diamond,.design-star{opacity:.35}}
+@media(max-width:620px){.interactive-shape:not(.spark):not(.orbit-one){pointer-events:none;transform:scale(.72)}.hero-dotted-ring{right:-22px}.about-petal{right:-18px}.work-ring{left:-24px}.design-diamond{right:-18px}.design-star{left:-8px}.contact-ring{left:-25px}}
+@media(prefers-reduced-motion:reduce){.interactive-shape{transform:none!important}.interactive-shape::after{display:none}}

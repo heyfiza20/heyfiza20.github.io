@@ -65,3 +65,38 @@ window.addEventListener('scroll', () => {
   scrollFrame = requestAnimationFrame(updateScrollEffects);
 }, { passive: true });
 updateScrollEffects();
+
+const interactiveShapes = document.querySelectorAll('.interactive-shape');
+if (!reducedMotion) {
+  interactiveShapes.forEach(shape => {
+    const strength = Number(shape.dataset.magnet || 14);
+    let shapeFrame;
+
+    shape.addEventListener('pointermove', event => {
+      if (event.pointerType === 'touch') return;
+      if (shapeFrame) cancelAnimationFrame(shapeFrame);
+      shapeFrame = requestAnimationFrame(() => {
+        const bounds = shape.getBoundingClientRect();
+        const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+        const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+        shape.style.setProperty('--mag-x', `${x * strength}px`);
+        shape.style.setProperty('--mag-y', `${y * strength}px`);
+        shape.style.setProperty('--mag-r', `${x * strength * 0.7}deg`);
+        shape.style.setProperty('--mag-scale', '1.14');
+      });
+    });
+
+    shape.addEventListener('pointerleave', () => {
+      shape.style.setProperty('--mag-x', '0px');
+      shape.style.setProperty('--mag-y', '0px');
+      shape.style.setProperty('--mag-r', '0deg');
+      shape.style.setProperty('--mag-scale', '1');
+    });
+
+    shape.addEventListener('click', () => {
+      shape.classList.remove('shape-burst');
+      requestAnimationFrame(() => shape.classList.add('shape-burst'));
+      window.setTimeout(() => shape.classList.remove('shape-burst'), 650);
+    });
+  });
+}
