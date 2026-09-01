@@ -1,19 +1,30 @@
-# Fiza Azad Portfolio
+# Fiza — Video Editing Portfolio
 
-A responsive, single-page portfolio built with plain HTML, CSS, and JavaScript.
+A clean, responsive single-page portfolio featuring 11 published short-form edits, Fiza Azad’s professional profile, CV, LinkedIn and contact information.
 
-## Open the site
+## Preview locally
 
-Open `index.html` directly in a browser, or run any simple static server in this folder.
+Open `index.html` in a browser, or run a small local server from this folder:
 
-## Update reel cards
+```bash
+python -m http.server 8000
+```
 
-In `index.html`, search for `Instagram Reel`. Each card has its own Instagram URL. Replace the `href`, title, or description as needed. To add thumbnails, set background images for `.reel-a` through `.reel-f` in `styles.css`.
+Then visit `http://localhost:8000`.
 
-## Update projects
+## Publish later
 
-Individual project images live in `assets/designs/` and are grouped in `index.html` under Advertising, Social Media, Calendar, Logos, and UI Design. Replace an image while keeping the same filename, or update its matching `src`.
+This is a static website and can be published free on GitHub Pages, Netlify, Cloudflare Pages, or any regular web host. Upload the contents of this folder—not the parent folder—to your host.
 
-## Update contact details
+## Included
 
-Search `index.html` for `fizaazadmangi@gmail.com` and replace both the visible email and `mailto:` link.
+- 11 TikTok and Instagram projects with an on-site video player
+- Explainer and documentary work filters
+- Downloadable CV
+- Email and LinkedIn contact links
+- Compact, symmetrical square reel grid on desktop and mobile
+- Viral and top-performing Instagram work prioritized first
+- Animated hero composition featuring the strongest Instagram reels
+- Separate links to view every original post on Instagram or TikTok
+- Introduction-led hero featuring Fiza Azad’s name, role and concise profile
+- Scroll reveal, hover and pointer-responsive motion
